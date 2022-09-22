@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import FormComp from './components/FormComp';
 import './App.css';
 
 function App() {
+
+  const handleSubmitForm = (event : React.FormEvent<HTMLFormElement> ):void => {
+    // console.log(event.target);
+    
+    const  myForm : HTMLFormElement
+        // = document.querySelector(`form#${event.target.id}`) as HTMLFormElement;
+        = document.getElementById((event.target.id)) as HTMLFormElement ;
+    console.log('id ',event.target.id )
+    const formData = new FormData(myForm);
+    console.log(`${event.target.id} : `)
+    for (const entries of formData.entries()) {
+      console.log(entries);
+    }
+    event.preventDefault();
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <FormComp 
+        formId = {'form1'}
+        fields = {["name","surname","pseudonyme","email"]} 
+        onSubmit ={handleSubmitForm} />
+      <br/>
+      <br/>
+      <br/>
+     <FormComp 
+        formId={'form2'}
+        fields = {["métier","formation"]}
+        onSubmit ={handleSubmitForm}
+     />
     </div>
   );
 }

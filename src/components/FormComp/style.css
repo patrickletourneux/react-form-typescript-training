@@ -1,0 +1,7 @@
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 50%;
+    align-items: center;
+}
