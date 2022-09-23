@@ -8,10 +8,10 @@ function App() {
     
     const  myForm : HTMLFormElement
         // = document.querySelector(`form#${event.target.id}`) as HTMLFormElement;
-        = document.getElementById((event.target.id)) as HTMLFormElement ;
-    console.log('id ',event.target.id )
+        = document.getElementById((event.currentTarget.id)) as HTMLFormElement ;
+    console.log('id ',event.currentTarget.id )
     const formData = new FormData(myForm);
-    console.log(`${event.target.id} : `)
+    console.log(`${event.currentTarget.id} : `)
     for (const entries of formData.entries()) {
       console.log(entries);
     }
